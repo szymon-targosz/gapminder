@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700|Slackey');
+
+*,
+*::before,
+*::after {
+   margin: 0;
+   padding: 0;
+   box-sizing: inherit;
+}
+
+html {
+   font-size: 62.5%;
+}
+
+body {
+   box-sizing: border-box;
+   font-size: 1.6rem;
+   font-family: 'Lato', sans-serif;
+}
+
+.container {
+   margin: 0 auto;
+   max-width: 90rem;
+   padding: 0 1rem;
+}
+
+header {
+   font-family: 'Slackey', cursive;
+   background: #f9cc3e;
+   padding: 2rem 0;
+   font-size: 3rem;
+   letter-spacing: 3px;
+}
