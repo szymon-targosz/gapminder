@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
    <title>Gapminder</title>
    <link rel="stylesheet" type="text/css" href="dist/style.css">
 </head>
+
 <body>
    <header>
       <div class="container">
@@ -16,10 +18,14 @@
 
    <main>
       <div class="container">
+         <div class="cta">
+            <button id="switch">Play</button>
+            <button id="reset">Reset</button>
+            <label for="range">Year: <span id="year"></span></label>
+            <input type="range" id="range" step="1">
+         </div>
          <div id="chart"></div>
       </div>
    </main>
 
-   <script src=dist/bundle.js></script>
-</body>
-</html>
+   <script src=dist/bundle.js> </script> </body> </html>
