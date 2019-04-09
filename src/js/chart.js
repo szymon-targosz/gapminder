@@ -73,7 +73,7 @@ export default class Chart {
                         .attr('x', this.width)
                         .attr('y', this.height - 10)
                         .attr('font-size', '4rem')
-                        .attr('fill', '#ccc')
+                        .attr('fill', '#bbb')
                         .attr('text-anchor', 'end')
                         .text('1800');
       
@@ -103,7 +103,14 @@ export default class Chart {
    }
 
    wrangleData() {
-      this.data = getData();
+      const { data, region } = getData();
+      this.data = {
+         year: data.year,
+         countries: data.countries.filter(d => {
+            if (region === 'all') return true;
+            return d.continent === region;
+         })
+      }
       
       this.updateVis();
    }

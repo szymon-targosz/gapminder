@@ -4,9 +4,10 @@ import '../index.css';
 
 let formattedData, firstYear, chart, interval, count = 0;
 const switchBtn = document.getElementById('switch'),
-      resetBtn = document.getElementById('reset'),
-      range = document.getElementById('range'),
-      year = document.getElementById('year');
+   resetBtn = document.getElementById('reset'),
+   range = document.getElementById('range'),
+   select = document.getElementById('region'),
+   year = document.getElementById('year');
 
 
 d3.json('../data/data.json')
@@ -24,7 +25,7 @@ d3.json('../data/data.json')
    });
 
 
-switchBtn.addEventListener('click', function() {
+switchBtn.addEventListener('click', function () {
    if (this.textContent === 'Play') {
       this.textContent = 'Pause';
       interval = setInterval(step, 200);
@@ -34,16 +35,17 @@ switchBtn.addEventListener('click', function() {
    }
 });
 
-resetBtn.addEventListener('click', function() {
+resetBtn.addEventListener('click', function () {
    count = 0;
    update();
 });
 
-range.addEventListener('input', function() {
+range.addEventListener('input', function () {
    count = this.value - firstYear;
    update();
 });
 
+select.addEventListener('change', update);
 
 function step() {
    count = count < formattedData.length - 1 ? ++count : 0;
@@ -56,4 +58,4 @@ function update() {
    chart.wrangleData();
 }
 
-export const getData = () => formattedData[count];
+export const getData = () => ({ data: formattedData[count], region: select.value });
