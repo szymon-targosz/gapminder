@@ -13,6 +13,7 @@ html {
 }
 
 body {
+   background: #fdfdfd;
    box-sizing: border-box;
    font-size: 1.6rem;
    font-family: 'Lato', sans-serif;
@@ -87,4 +88,29 @@ select:hover {
 #chart svg {
    display: block;
    margin: 0 auto;
+}
+
+
+.tip {
+   background: rgba(0, 0, 0, .8);
+   color: #fdfdfd;
+   font-weight: 700;
+   padding: 1.5rem;
+   pointer-events: none;
+}
+
+.tip span {
+   text-transform: capitalize;
+   color: #f9cc3e;
+}
+
+.tip::after {
+   pointer-events: none;
+   display: block;
+   content: '';
+   position: absolute;
+   border: 6px solid transparent;
+   border-top-color: rgba(0, 0, 0, .8);
+   left: calc((100% / 2) - 6px);
+   bottom: -12px;
 }

@@ -1,4 +1,5 @@
 import * as d3 from 'd3';
+import tip from 'd3-tip';
 import { getData } from './index';
 
 export default class Chart {
@@ -77,6 +78,18 @@ export default class Chart {
                         .attr('text-anchor', 'end')
                         .text('1800');
       
+      this.tip = tip()
+                  .attr('class', 'tip')
+                  .html(({ country, continent, life_exp, population, income }) => `
+                     <p>Country: <span>${country}</span></p>
+                     <p>Region: <span>${continent}</span></p>
+                     <p>Life Expectancy: <span>${d3.format('.2f')(life_exp)}</span></p>
+                     <p>Population: <span>${d3.format(',.0f')(population)}</span></p>
+                     <p>Income: <span>${d3.format('$,.0f')(income)}</span></p>
+                  `);
+
+      this.g.call(this.tip);
+
       this.wrangleData()
       this.addLegend()
    }
@@ -116,6 +129,7 @@ export default class Chart {
    }
 
    updateVis() {
+      const vis = this;
       const circles = this.g.selectAll('circle')
                            .data(this.data.countries, d => d.country);
 
@@ -131,8 +145,14 @@ export default class Chart {
             .attr('fill', d => this.c(d.continent))
             .attr('stroke', d => this.c(d.continent))
             .attr('stroke-width', 1)
-            .on('mouseover', () => d3.event.target.style.stroke = 'black')
-            .on('mouseout', (d) => d3.event.target.style.stroke = this.c(d.continent))
+            .on('mouseover touchstart', function(d) {
+               d3.event.target.style.stroke = 'black';
+               vis.tip.show(d, this);
+            })
+            .on('mouseout touchend', (d) => {
+               d3.event.target.style.stroke = this.c(d.continent);
+               vis.tip.hide(d, this);
+            })
          .merge(circles)
             .transition(this.t())
             .attr('r', d => Math.sqrt(this.r(d.population) / Math.PI))
