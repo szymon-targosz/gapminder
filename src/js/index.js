@@ -1,8 +1,9 @@
 import * as d3 from 'd3';
 import Chart from './chart';
+import BarChart from './bar-chart';
 import '../index.css';
 
-let formattedData, firstYear, chart, interval, count = 0;
+let formattedData, firstYear, chart, barIncome, barLife, barPopulation, interval, count = 0;
 const switchBtn = document.getElementById('switch'),
    resetBtn = document.getElementById('reset'),
    range = document.getElementById('range'),
@@ -21,7 +22,10 @@ d3.json('../data/data.json')
       range.setAttribute('max', formattedData[formattedData.length - 1].year);
       range.setAttribute('value', firstYear);
       year.textContent = firstYear;
-      chart = new Chart('#chart');
+      chart = new Chart('#main-chart');
+      barIncome = new BarChart('#income', 'income', 'Average GDP per capita');
+      barLife = new BarChart('#life-exp', 'life_exp', 'Average life expectancy');
+      barPopulation = new BarChart('#population', 'population', 'Population');
    });
 
 
@@ -56,6 +60,9 @@ function update() {
    range.value = firstYear + count;
    year.textContent = firstYear + count;
    chart.wrangleData();
+   barIncome.wrangleData();
+   barLife.wrangleData();
+   barPopulation.wrangleData();
 }
 
 export const getData = () => ({ data: formattedData[count], region: select.value });

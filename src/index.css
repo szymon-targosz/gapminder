@@ -114,3 +114,8 @@ select:hover {
    left: calc((100% / 2) - 6px);
    bottom: -12px;
 }
+
+#bar-charts {
+   display: flex;
+   justify-content: space-between;
+}

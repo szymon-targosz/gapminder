@@ -14,7 +14,7 @@ export default class Chart {
       this.height = 500 - this.margin.bottom - this.margin.top;
       this.width = 800 - this.margin.right - this.margin.left;
       this.continents = ['asia', 'africa', 'europe', 'americas'];
-      this.t = () => d3.transition().duration(200).ease(d3.easeExpIn)
+      this.t = () => d3.transition().duration(200).ease(d3.easeExpIn);
 
       this.svg = d3.select(this.parentElem).append('svg')
                      .attr('width', this.width + this.margin.left + this.margin.right)
@@ -60,7 +60,7 @@ export default class Chart {
                         .attr('y', this.height + 40)
                         .attr('font-size', '1.4rem')
                         .attr('text-anchor', 'middle')
-                        .text('Income (USD)');
+                        .text('GDP per capita (USD)');
 
       this.yLabel = this.g.append('text')
                         .attr('x', -this.height / 2)
