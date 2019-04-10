@@ -11,9 +11,9 @@ export default class BarChart {
    }
 
    initVis() {
-      this.margin = { left: 40, right: 40, top: 40, bottom: 30 };
+      this.margin = { left: 40, right: 40, top: 40, bottom: 50 };
       this.height = 200 - this.margin.top - this.margin.bottom;
-      this.width = 250 - this.margin.left - this.margin.right;
+      this.width = 270 - this.margin.left - this.margin.right;
       this.continents = ['asia', 'africa', 'europe', 'americas'];
       this.t = () => d3.transition().duration(150);
 
@@ -87,8 +87,14 @@ export default class BarChart {
 
       this.xAxisCall.scale(this.x);
       this.yAxisCall.scale(this.y);
-      this.xAxis.transition(this.t()).call(this.xAxisCall);
       this.yAxis.transition(this.t()).call(this.yAxisCall);
+      this.xAxis.transition(this.t())
+                  .call(this.xAxisCall)
+                  .selectAll("text")
+                  .attr("y", 5)
+                  .attr("x", -8)
+                  .attr("transform", "rotate(-40)")
+                  .style("text-anchor", "end");
 
       this.rects = this.g.selectAll('rect')
                         .data(this.data, d => d.region); 
