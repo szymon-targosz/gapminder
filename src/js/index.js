@@ -17,6 +17,8 @@ d3.json('../data/data.json')
          year: yearData.year,
          countries: yearData.countries.filter(country => country.life_exp && country.income)
       }));
+      document.querySelector('.loader').style.display = 'none';
+      document.querySelector('.loader-wrapper').classList.add('fadeOut');
       firstYear = +formattedData[0].year;
       range.setAttribute('min', firstYear);
       range.setAttribute('max', formattedData[formattedData.length - 1].year);

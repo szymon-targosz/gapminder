@@ -1,43 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+      <title>Gapminder</title>
+      <link rel="stylesheet" type="text/css" href="dist/style.css" />
+   </head>
 
-<head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-   <title>Gapminder</title>
-   <link rel="stylesheet" type="text/css" href="dist/style.css">
-</head>
-
-<body>
-   <header>
-      <div class="container">
-         <p>Gapminder</p>
-      </div>
-   </header>
-
-   <main>
-      <div class="container">
-         <div class="cta">
-            <button id="switch">Play</button>
-            <button id="reset">Reset</button>
-            <label for="range">Year: <span id="year"></span></label>
-            <input type="range" id="range" step="1">
-            <select id="region">
-               <option value="all">All</option>
-               <option value="asia">Asia</option>
-               <option value="africa">Africa</option>
-               <option value="europe">Europe</option>
-               <option value="americas">Americas</option>
-            </select>
+   <body>
+      <header>
+         <div class="container">
+            <p>Gapminder</p>
          </div>
-         <div id="main-chart"></div>
-         <div id="bar-charts">
-            <div id="income"></div>
-            <div id="life-exp"></div>
-            <div id="population"></div>
-         </div>
-      </div>
-   </main>
+      </header>
 
-   <script src=dist/bundle.js> </script> </body> </html>
+      <main>
+         <div class="container">
+            <div class="cta">
+               <button id="switch">Play</button>
+               <button id="reset">Reset</button>
+               <label for="range">Year: <span id="year"></span></label>
+               <input type="range" id="range" step="1" />
+               <select id="region">
+                  <option value="all">All</option>
+                  <option value="asia">Asia</option>
+                  <option value="africa">Africa</option>
+                  <option value="europe">Europe</option>
+                  <option value="americas">Americas</option>
+               </select>
+            </div>
+            <div id="main-chart"></div>
+            <div id="bar-charts">
+               <div id="income"></div>
+               <div id="life-exp"></div>
+               <div id="population"></div>
+            </div>
+         </div>
+      </main>
+
+      <div class="loader-wrapper">
+         <div class="loader"></div>
+      </div>
+
+      <script src="dist/bundle.js"></script>
+   </body>
+</html>

@@ -47,8 +47,8 @@ select {
    font-family: inherit;
    font-size: inherit;
    outline: none;
-   padding: .8rem 1.5rem;
-   transition: all .3s;
+   padding: 0.8rem 1.5rem;
+   transition: all 0.3s;
 }
 
 button {
@@ -90,9 +90,8 @@ select:hover {
    margin: 0 auto;
 }
 
-
 .tip {
-   background: rgba(0, 0, 0, .8);
+   background: rgba(0, 0, 0, 0.8);
    color: #fdfdfd;
    font-weight: 700;
    padding: 1.5rem;
@@ -110,7 +109,7 @@ select:hover {
    content: '';
    position: absolute;
    border: 6px solid transparent;
-   border-top-color: rgba(0, 0, 0, .8);
+   border-top-color: rgba(0, 0, 0, 0.8);
    left: calc((100% / 2) - 6px);
    bottom: -12px;
 }
@@ -118,4 +117,43 @@ select:hover {
 #bar-charts {
    display: flex;
    justify-content: space-between;
+}
+
+.loader-wrapper {
+   align-items: center;
+   background: #132121;
+   display: flex;
+   justify-content: center;
+   left: 0;
+   min-height: 100vh;
+   position: absolute;
+   top: 0;
+   width: 100%;
+   z-index: 1000;
+   transition: width .75s cubic-bezier(1, 0, 0, 1);
+}
+
+.loader {
+   border-radius: 50%;
+   border-top: 0.75rem solid rgba(249, 204, 62, 0.2);
+   border-right: 0.75rem solid rgba(249, 204, 62, 0.2);
+   border-bottom: 0.75rem solid rgba(249, 204, 62, 0.2);
+   border-left: 0.75rem solid #f9cc3e;
+   height: 8rem;
+   width: 8rem;
+   animation: spin .75s infinite linear;
+}
+
+.fadeOut {
+   width: 0%;
+}
+
+
+@keyframes spin {
+   0% {
+      transform: rotate(0deg);
+   }
+   100% {
+      transform: rotate(360deg);
+   }
 }
